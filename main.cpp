@@ -18,6 +18,9 @@ int main()
     PassFailActivity test(70);
     GradedActivity test1(88.0);
     PassFailExam test2(100, 25, 70.0);
+    GradedActivity& ref = test; // Refers to the whole PassFailActivity
+    GradedActivity copy = test; // New GradedActivity; derived part sliced
+
 
     // Constant for the size of an array.
     const int NUM_TESTS = 4;
@@ -78,6 +81,15 @@ int main()
 				cout << endl;
 			}
 			break;
+        case 5:
+			// Demonstration of slicing
+            cout << "\nPassFailActivity object passed by ref:\n";
+            ref.setScore(72);
+			displayGrade(ref);  // PassFailActivity object (ref)
+            cout << "\nPassFailActiviy object passed by value (copy):\n";
+			copy.setScore(72);
+			displayGrade(copy); // GradedActivity object (copy)
+            break;
     }
   
     return 0;
@@ -119,5 +131,6 @@ void displayMenu()
     cout << "2. Display graded activity grade and pass/fail grade (by reference)\n";
 	cout << "3. Display graded activity grade and pass/fail grade (by pointer)\n";
     cout << "4. Display the grade data for each element in the tests array.\n";
+	cout << "5. Demonstration of slicing\n";
 	cout << "Enter your choice: ";
 }
