@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Pass-Fail Activity - Virtual Functions.vcxproj" />
+  <Project Path="Pass-Fail Activity - Virtual Functions.vcxproj" Id="93a003cd-a6b1-42cb-aa7f-44d2e40817b8" />
 </Solution>

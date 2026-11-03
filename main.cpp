@@ -18,6 +18,8 @@ int main()
     PassFailActivity test(70);
     GradedActivity test1(88.0);
     PassFailExam test2(100, 25, 70.0);
+    GradedActivity *test3 = new GradedActivity(92.0);
+	PassFailExam* test4 = new PassFailExam(50, 12, 60.0);
     GradedActivity& ref = test; // Refers to the whole PassFailActivity
     GradedActivity copy = test; // New GradedActivity; derived part sliced
 
@@ -42,8 +44,10 @@ int main()
 
     switch (choice){
         case 1:
-            // Use the PassFailActivity object (test). Minimum passing score is 70.
-            // Set the score to 72. 
+            // Use the PassFailActivity object (test). 
+            // Minimum passing score set to 70 in the constructor:
+            //     PassFailActivity test(70);
+            // There the actual score is set to 72.
             test.setScore(72);
 
             // Display the object's grade data. The letter grade
@@ -67,10 +71,12 @@ int main()
             // There are 100 questions, the student missed 25 of them, 
             // and the minimum passing score is 70.
 
-            cout << "Test 1:\n";
-            displayGrade(&test1);  // Address of the GradedActivity object
-            cout << "\nTest 2:\n";
-            displayGrade(&test2);  // Address of the PassFailExam object
+            cout << "Test 3:\n";
+            displayGrade(test3);  // Pointer to GradedActivity object
+            cout << "\nTest 4:\n";
+            displayGrade(test4);  // Pointer to PassFailExam object
+            delete test3;
+			delete test4;
             break;
 		case 4:
 			// Display the grade data for each element in the tests array.
@@ -79,6 +85,7 @@ int main()
 				cout << "Test #" << (count + 1) << ":\n";
 				displayGrade(tests[count]);
 				cout << endl;
+				delete tests[count];  // Free the memory for each object
 			}
 			break;
         case 5:
